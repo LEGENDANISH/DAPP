@@ -17,14 +17,29 @@ import ShowBalance from './ShowBalance';
 
 const App = () => {
   return (
-                  <div style={{display: 'flex', justifyContent: 'center', marginTop: '20px'}} >
-     <ConnectionProvider endpoint={"https://devnet.solana.com"}>
+                  <div className=' justify-center ' >
+                    <div className='text-violet-400 font-extrabold text-7xl flex justify-center' >
+                          <h1>
+                      SOLANA DAPP
+                    </h1>
+                    <div className='flex absolute right-0'>
+                                           <WalletMultiButton/>
+
+                    </div>
+
+                    </div>
+
+                
+     <ConnectionProvider endpoint={"https://api.devnet.solana.com"}>
             <WalletProvider wallets={[]} autoConnect>
                 <WalletModalProvider>
-                  <div style={{display: 'flex', justifyContent: 'center', marginTop: '20px'}} >
+                  <div  >
                     {/* <RequestAirdrop/> */}
+<div className='flex justify-center '>
+
                     <ShowBalance/>
- <WalletMultiButton/>
+
+</div>
                  
                   </div>
                         
