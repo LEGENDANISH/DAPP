@@ -6,42 +6,19 @@ import { Send } from 'lucide-react';
 const SendTokens = () => {
     const wallet = useWallet();
     const { connection } = useConnection();
-    const [loading, setLoading] = useState(false);
 
     async function sendTokens() {
-        try {
-            setLoading(true);
+        let to = document.getElementById("to").value;
+        let amount = document.getElementById("amount").value;
+        const transaction = new Transaction();
+        transaction.add(SystemProgram.transfer({
+            fromPubkey: wallet.publicKey,
+            toPubkey: new PublicKey(to),
+            lamports: amount * LAMPORTS_PER_SOL,
+        }));
 
-            if (!wallet.publicKey) throw new Error('⚠️ Please connect your wallet first.');
-
-            const to = document.getElementById('to').value;
-            const amount = parseFloat(document.getElementById('amount').value);
-
-            if (!to || !amount || isNaN(amount) || amount <= 0) {
-                throw new Error('⚠️ Please enter valid recipient and amount.');
-            }
-
-            const transaction = new Transaction();
-            transaction.add(
-                SystemProgram.transfer({
-                    fromPubkey: wallet.publicKey,
-                    toPubkey: new PublicKey(to),
-                    lamports: amount * LAMPORTS_PER_SOL,
-                })
-            );
-
-            await wallet.sendTransaction(transaction, connection);
-            alert(`✅ Sent ${amount} SOL to ${to}`);
-
-            // Clear inputs
-            document.getElementById('to').value = '';
-            document.getElementById('amount').value = '';
-        } catch (err) {
-            console.error(err);
-            alert(err.message || '❌ Transaction failed. Please try again.');
-        } finally {
-            setLoading(false);
-        }
+        await wallet.sendTransaction(transaction, connection);
+        alert("Sent " + amount + " SOL to " + to);
     }
 
     return (
@@ -66,13 +43,12 @@ const SendTokens = () => {
             />
             <button
                 onClick={sendTokens}
-                disabled={loading || !wallet.publicKey}
+                disabled={!wallet.publicKey}
                 className="w-full bg-gradient-to-r from-emerald-500 to-green-500 hover:from-emerald-400 hover:to-green-400 disabled:from-gray-700 disabled:to-gray-800 text-white font-bold py-4 rounded-2xl transition-all transform hover:scale-[1.02] active:scale-[0.98] disabled:cursor-not-allowed disabled:transform-none shadow-lg hover:shadow-emerald-500/50"
             >
-                {loading ? 'Sending...' : 'Send Tokens'}
+                Send Tokens
             </button>
         </div>
     );
-};
-
+}
 export default SendTokens;
