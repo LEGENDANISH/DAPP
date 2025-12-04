@@ -1,16 +1,61 @@
-# React + Vite
+# DAPP 🌐
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**A minimal frontend template for a decentralized application (dApp)** — built with **React + Vite**.
 
-Currently, two official plugins are available:
+This repository serves as the starting point for building a blockchain-integrated web app (e.g. on Solana, Ethereum, or other EVM/Solana-compatible chains). It provides a modern React/Vite setup with development tooling, and is intended to be extended with smart-contract integration, wallet support, and custom features.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 📂 Project Structure
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+/
+├── public/ # Static files (e.g. index.html, assets)
+├── src/ # React source code (components, pages, styles, utils…)
+├── .gitignore # Files/folders to ignore in git
+├── package.json # Dependencies & scripts
+├── package-lock.json # Locked dependency versions
+├── vite.config.js # Vite configuration
+├── eslint.config.js # ESLint configuration
+└── README.md # Project documentation (this file)
 
-## Expanding the ESLint configuration
+yaml
+Copy code
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## ⚙️ Tech Stack & Key Tools
+
+- **React** — front-end UI library  
+- **Vite** — dev server & build tool for fast HMR + optimized builds  
+- **ESLint** — linting & code style enforcement  
+- **JavaScript (or optionally TypeScript)** — for writing components, logic, hooks, etc.  
+- *(Optionally)* A blockchain SDK — e.g. Web3.js, Ethers.js, or Solana Web3 — for smart contract / blockchain interaction  
+
+This approach mirrors common dApp architectures: a web UI + blockchain backend. As described by developers, a dApp typically combines on-chain smart contracts with a user-facing frontend that interacts via a wallet. :contentReference[oaicite:1]{index=1}
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js (v14 or newer recommended)  
+- npm (comes with Node.js)  
+- A blockchain wallet (e.g. MetaMask, Phantom, etc.), if you plan to integrate smart-contract interactions  
+
+### Installation
+
+```bash
+git clone https://github.com/LEGENDANISH/DAPP.git
+cd DAPP
+npm install
+Running in Development Mode
+bash
+Copy code
+npm run dev
+This will start the Vite development server. Open your browser and go to http://localhost:5173 (or the port Vite shows) to view the app.
+
+Building for Production
+bash
+Copy code
+npm run build
+Built files will be output into dist/. You can then deploy them to your preferred static-site host (Vercel, Netlify, IPFS + hosting gateway, etc.).
