@@ -1500,7 +1500,7 @@ A: Implement caching, use websockets for real-time updates, and batch multiple q
 
 ### 🚀 Happy Building on Solana!
 
-Made with ❤️ by [LEGENDANISH](https://github.com/LEGENDANISH)
+Made with ❤️ by [ANISH](https://github.com/anishkumar0504)
 
 ---
 
